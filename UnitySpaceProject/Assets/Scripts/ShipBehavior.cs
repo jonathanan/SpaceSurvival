@@ -5,6 +5,23 @@ public class ShipBehavior : MonoBehaviour {
 	
 	public float speed;
 	public float rotationSpeed;
+	public float maxRotateAngleX = 7f;
+	public float maxRotateAngleZ = 2f;
+	Vector3 curRot;
+	float maxRotX; float minRotX;
+	float maxRotZ; float minRotZ;
+
+	void Start() {
+		//Need this because for some reason Rotate x starts at -8
+		transform.Rotate (0,0,0);
+		//Get initial rotation
+		curRot = this.transform.eulerAngles;
+		//calculate limit angles
+		maxRotX = curRot.x + maxRotateAngleX;
+		minRotX = curRot.x - maxRotateAngleX;
+		maxRotZ = curRot.z + maxRotateAngleZ;
+		minRotZ = curRot.z;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,8 +39,23 @@ public class ShipBehavior : MonoBehaviour {
 		rotationH *= Time.deltaTime;
 		rotationV *= Time.deltaTime;
 
+		//translate boundaries
+		float minTransX = -15F; float maxTransX = 15F;
+		float minTransY = -8.3F; float maxTransY = 7.0F;
+		Vector3 pos = transform.position;
+		pos.x = Mathf.Clamp (pos.x + translationH, minTransX, maxTransX);
+		pos.y = Mathf.Clamp (pos.y + translationV, minTransY, maxTransY);
+		pos.z = 0;
 		//move ship
-		transform.Translate (0, translationV, translationH);
-		transform.Rotate (rotationH, 0, rotationV);
+		transform.position = pos;
+
+		//rotation boundaries
+		//limit rotations
+		curRot.x += rotationH;
+		curRot.z += rotationV;
+		curRot.x = Mathf.Clamp (curRot.x, minRotX, maxRotX);
+		curRot.z = Mathf.Clamp (curRot.z, minRotZ, maxRotZ);
+		//rotate ship
+		this.transform.eulerAngles = curRot;
 	}
 }
