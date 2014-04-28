@@ -17,7 +17,16 @@ public class AstroidBehavior : MonoBehaviour {
 
 		pos.x += 0.05f * ast_direction * Time.deltaTime;
 		pos.y += 0.02f * ast_direction * Time.deltaTime;
-		pos.z += -3f * Time.deltaTime;
+
+		if (pos.z >= 20) 
+		{
+			pos.z += -7f * Time.deltaTime;
+		}
+		else
+		{
+			pos.z += -3f * Time.deltaTime;
+		}
+
 		transform.position = pos;
 
 		if (pos.z <= -15) 
