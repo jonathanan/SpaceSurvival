@@ -21,5 +21,4 @@ public class MenuScript : MonoBehaviour
 			Application.LoadLevel(1);
 		}
 	}
-	//test
 }
