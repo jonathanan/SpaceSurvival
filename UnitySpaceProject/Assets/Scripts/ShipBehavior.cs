@@ -32,6 +32,7 @@ public class ShipBehavior : MonoBehaviour {
 		float translationV = Input.GetAxis ("Vertical") * speed;
 		float rotationV = Input.GetAxis ("Vertical") * rotationSpeed;
 		float rotationH = Input.GetAxis ("Horizontal") * rotationSpeed;
+
 		
 		// Make it move 10 meters per second instead of 10 meters per frame...
 		translationH *= Time.deltaTime;
@@ -48,6 +49,7 @@ public class ShipBehavior : MonoBehaviour {
 		pos.z = 0;
 		//move ship
 		transform.position = pos;
+
 
 		//rotation boundaries
 		//limit rotations

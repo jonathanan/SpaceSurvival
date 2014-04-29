@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AstroidBehavior : MonoBehaviour {
-	
+	public GameObject asteroid;
 	public float ast_direction = 0.0f;
 	// Use this for initialization
 	void Start () {
@@ -31,13 +31,7 @@ public class AstroidBehavior : MonoBehaviour {
 		
 		if (pos.z <= -15) 
 		{
-			pos.x = 0;
-			pos.y = 0;
-			pos.z = 50;
-			
-			transform.position = pos;
-			
-			ast_direction = Random.Range (-0.7f, 0.7f);
+			Destroy (gameObject);
 		}
 	}
 }
