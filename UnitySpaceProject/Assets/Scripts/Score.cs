@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Score : MonoBehaviour {
 
-	float score = 0;
+	public float score = 0;
 
 	void Update() {
 		score = Time.time;

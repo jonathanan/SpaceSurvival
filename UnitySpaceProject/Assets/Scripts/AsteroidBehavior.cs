@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AstroidBehavior : MonoBehaviour {
+public class AsteroidBehavior : MonoBehaviour {
 	public GameObject asteroid;
 	public float ast_direction = 0.0f;
 	// Use this for initialization

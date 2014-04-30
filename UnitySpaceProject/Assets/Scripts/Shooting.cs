@@ -25,6 +25,7 @@ public class Shooting : MonoBehaviour {
 			                                                transform.position,
 			                                                transform.rotation)
 															as Rigidbody;
+			projectile.gameObject.tag = "bullet";
 
 			//make object move
 			instantiatedProjectile.velocity = transform.InverseTransformDirection(new Vector3(0, 0, bulletSpeed));

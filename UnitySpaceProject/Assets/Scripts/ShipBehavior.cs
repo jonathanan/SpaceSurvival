@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class ShipBehavior : MonoBehaviour {
-	
+
+	public int lives = 1;
 	public float speed;
 	public float rotationSpeed;
 	public float maxRotateAngleX = 7f;
