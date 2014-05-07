@@ -26,6 +26,7 @@ public class destroyObjects : MonoBehaviour
 			Destroy (other.gameObject); //destroys ship
 			Destroy (gameObject); //destroys asteroid
 			//shipbehavior.lives--;
+			Screen.showCursor = true;
 			Application.LoadLevel(2);
 		}
 	}

@@ -12,16 +12,14 @@ public class ShipBehavior : MonoBehaviour {
 	float maxRotX; float minRotX;
 	float maxRotZ; float minRotZ;
 
+	GameObject line;
+	LineRenderer lr;
+
 	void Start() {
-		//Need this because for some reason Rotate x starts at -8
-		transform.Rotate (0,0,0);
-		//Get initial rotation
-		curRot = this.transform.eulerAngles;
-		//calculate limit angles
-		maxRotX = curRot.x + maxRotateAngleX;
-		minRotX = curRot.x - maxRotateAngleX;
-		maxRotZ = curRot.z + maxRotateAngleZ;
-		minRotZ = curRot.z;
+		line = new GameObject ();
+		lr = line.AddComponent<LineRenderer> ();
+		lr.SetWidth (.1f, .1f);
+		//lr.SetColors(
 	}
 	
 	// Update is called once per frame
@@ -54,11 +52,23 @@ public class ShipBehavior : MonoBehaviour {
 
 		//rotation boundaries
 		//limit rotations
-		curRot.x += rotationH;
-		curRot.z += rotationV;
-		curRot.x = Mathf.Clamp (curRot.x, minRotX, maxRotX);
-		curRot.z = Mathf.Clamp (curRot.z, minRotZ, maxRotZ);
+		//curRot.x += rotationH;
+		//curRot.z += rotationV;
+		//curRot.x = Mathf.Clamp (curRot.x, minRotX, maxRotX);
+		//curRot.z = Mathf.Clamp (curRot.z, minRotZ, maxRotZ);
 		//rotate ship
-		this.transform.eulerAngles = curRot;
+		//this.transform.eulerAngles = curRot;
+
+		//crosshair
+		Vector3 mousePos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 50f);
+		mousePos = Camera.main.ScreenToWorldPoint (mousePos);
+		transform.LookAt (mousePos);
+		transform.Rotate (0f, 90f, 0f);
+
+		//Line from ship to crosshair
+		GameObject shootPoint = GameObject.Find ("shootPoint");
+		lr.SetPosition (0, shootPoint.transform.position);
+		lr.SetPosition (1, mousePos);
+
 	}
 }

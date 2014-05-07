@@ -28,7 +28,7 @@ public class Shooting : MonoBehaviour {
 			projectile.gameObject.tag = "bullet";
 
 			//make object move
-			instantiatedProjectile.velocity = transform.InverseTransformDirection(new Vector3(0, 0, bulletSpeed));
+			instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));
 
 			//stops collisions between bullets and camera
 			//Physics.IgnoreCollision(instantiatedProjectile.collider, transform.root.collider);

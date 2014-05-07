@@ -24,7 +24,7 @@ public class AsteroidBehavior : MonoBehaviour {
 		}
 		else
 		{
-			pos.z += -3f * Time.deltaTime;
+			pos.z += -7f * Time.deltaTime;
 		}
 		
 		transform.position = pos;

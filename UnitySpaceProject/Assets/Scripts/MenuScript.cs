@@ -18,6 +18,7 @@ public class MenuScript : MonoBehaviour
 			Application.Quit();
 		}
 		else {
+			Screen.showCursor = false;
 			Application.LoadLevel(1);
 		}
 	}
