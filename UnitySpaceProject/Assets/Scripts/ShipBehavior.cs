@@ -40,8 +40,8 @@ public class ShipBehavior : MonoBehaviour {
 		rotationV *= Time.deltaTime;
 
 		//translate boundaries
-		float minTransX = -15F; float maxTransX = 15F;
-		float minTransY = -8.3F; float maxTransY = 7.0F;
+		float minTransX = -17F; float maxTransX = 17F;
+		float minTransY = -9F; float maxTransY = 9F;
 		Vector3 pos = transform.position;
 		pos.x = Mathf.Clamp (pos.x + translationH, minTransX, maxTransX);
 		pos.y = Mathf.Clamp (pos.y + translationV, minTransY, maxTransY);

@@ -57,14 +57,17 @@
      <Compile Include="Assets\Materials\Done\Done_Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\Materials\Done\Done_Scripts\Done_WeaponController.cs" />
      <Compile Include="Assets\Scripts\AsteroidBehavior.cs" />
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\GameBoundary.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\PowerUpBehavior.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\ShipBehavior.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\destroyObjects.cs" />
      <Compile Include="Assets\Scripts\gameOver.cs" />
+     <None Include="Assets\Materials\Materials\BackgroundFog.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
