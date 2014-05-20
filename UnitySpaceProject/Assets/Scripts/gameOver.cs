@@ -24,10 +24,7 @@ public class gameOver : MonoBehaviour {
 	}
 
 	//----------------------Display Score-------------------------------
-	Score sscript = GameObject.Find("Score").GetComponent<Score>();
-	//float finalScore = sscript.score;
 	void OnGUI() {
-		GUI.skin.box.alignment = TextAnchor.MiddleLeft;
-		GUI.Box (new Rect (625, 200, 250, 150), "TEST");
+		Screen.showCursor = true;
 	}
 }

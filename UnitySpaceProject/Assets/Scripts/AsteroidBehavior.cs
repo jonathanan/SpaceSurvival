@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class AsteroidBehavior : MonoBehaviour {
+
+	ShipBehavior shipbehavior = GameObject.Find ("ship").GetComponent<ShipBehavior>();
+
 	public GameObject asteroid;
 	public float rotationSpeed = 0.0f;
 	float ast_direction = 0.0f;
@@ -15,21 +18,27 @@ public class AsteroidBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Translate
+		// transform.Translate(Vector3.front * -7 * Time.deltaTime);
+		
 		Vector3 pos = transform.position;
+		
 		pos.x += 0.05f * ast_direction * Time.deltaTime;
 		pos.y += 0.02f * ast_direction * Time.deltaTime;
-		
-		if (pos.z >= 20) 
+
+		GameObject ship = GameObject.Find("ship");
+		ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
+
+		if (ship2.SlowTime) 
 		{
-			pos.z += -7f * Time.deltaTime;
+			pos.z += -4f * Time.deltaTime;
 		}
 		else
 		{
-			pos.z += -7f * Time.deltaTime;
+			pos.z += -10f * Time.deltaTime;
 		}
+		
 		transform.position = pos;
-		//Delete once asteroid goes past camera
+		
 		if (pos.z <= -15) 
 		{
 			Destroy (gameObject);

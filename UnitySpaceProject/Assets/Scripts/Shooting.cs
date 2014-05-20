@@ -7,6 +7,10 @@ public class Shooting : MonoBehaviour {
 	public float bulletSpeed = 500;
 	public float fireRate = 0.5f;
 	public float nextShot = 0.0f;
+	public bool Rapidfire = false;
+	public float poweruptime;
+
+	public AudioClip[] audioClips;
 
 	// Update is called once per frame
 	void Update () {
@@ -17,8 +21,21 @@ public class Shooting : MonoBehaviour {
 		 *and caused bullet spray.
 		 *Also limits number of shots allowed each second.
 		 */
-		if (Input.GetButtonDown ("Fire1") && Time.time > nextShot) {
 
+
+		if (Rapidfire == true) {
+			
+			fireRate = 0.1f;
+			if(poweruptime <= Time.time)
+			{
+				Rapidfire = false;
+				fireRate = .5f;
+			}
+			//stops collisions between bullets and camera
+			//Physics.IgnoreCollision(instantiatedProjectile.collider, transform.root.collider);
+		}
+		if (Input.GetButton ("Fire1") && Time.time > nextShot) {
+			 
 			nextShot = Time.time + fireRate;
 
 			Rigidbody instantiatedProjectile = Instantiate (projectile,				

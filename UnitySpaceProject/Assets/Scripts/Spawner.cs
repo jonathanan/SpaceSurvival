@@ -5,8 +5,14 @@ public class Spawner : MonoBehaviour
 {
 	public GameObject spaceship;
 	public GameObject hazard;
-	public GameObject powerup;
+	public GameObject hazard2;
+	public GameObject hazard3;
+	public GameObject powerupscore;
+	public GameObject powerupshield;
+	public GameObject poweruptime;
+	public GameObject powerupshooting;
 
+	
 	public Vector3 spawnValues;
 	public int hazardCount;
 	public float spawnWait;
@@ -28,19 +34,53 @@ public class Spawner : MonoBehaviour
 
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
-				if(Random.Range (0f, 1f) > .15f)
+				float randomnum = Random.Range(0f, 1f);
+				if(randomnum > .05f)
 				{
-					Instantiate (hazard, spawnPosition, spawnRotation);
-					hazard.gameObject.tag = "asteroid";
+					float randomasteroidtype = Random.Range (0f,1f);
+					if(randomasteroidtype > .67f)
+					{
+						Instantiate (hazard, spawnPosition, spawnRotation);
+						hazard.gameObject.tag = "asteroid";
+					}
+					else if(randomasteroidtype > .33f)
+					{
+						Instantiate (hazard2, spawnPosition, spawnRotation);
+						hazard2.gameObject.tag = "asteroid";
+					}
+					else
+					{
+						Instantiate (hazard3, spawnPosition, spawnRotation);
+						hazard3.gameObject.tag = "asteroid";
+					}
+				
+
 				}
-				else if(Random.Range (0f, 1f) < .67f)
-				{
-					Instantiate (spaceship, spawnPosition, spawnRotation);
+				//else if(randomnum > .05f)
+				//{
+					//Instantiate (spaceship, spawnPosition, spawnRotation);
 					//spaceship.gameObject.tag = "enemyspaceship";
-				}
+				//}
 				else
 				{
-					Instantiate (powerup, spawnPosition, spawnRotation);
+					float randompowerup = Random.Range(0f, 1f);
+					if(randompowerup > .75f)
+					{
+						Instantiate (powerupscore, spawnPosition, spawnRotation);
+					}
+					else if(randompowerup > .5f)
+					{
+						Instantiate (powerupshooting, spawnPosition, spawnRotation);
+					}
+					else if(randompowerup > .25f)
+					{
+						Instantiate (poweruptime, spawnPosition, spawnRotation);
+					}
+					else
+					{
+						Instantiate (powerupshield, spawnPosition, spawnRotation);
+					}
+
 					//powerup.gameObject.tag = "powerup";
 				}
 				yield return new WaitForSeconds (spawnWait);
