@@ -14,9 +14,16 @@ public class destroyObjects : MonoBehaviour
 
 		if (other.tag == "bullet") 
 		{
-			Instantiate (explosion, transform.position, transform.rotation); //explosion will occur at asteroid
-			Destroy (gameObject); //destroys asteroid
+			GameObject spawner = GameObject.Find("Spawner");
+			enemySpaceshipSpawner spawnerScript = spawner.GetComponent<enemySpaceshipSpawner>();
+
+			Instantiate (explosion, transform.position, transform.rotation); //explosion will occur at collision
+			if(gameObject.tag == "Enemy" || gameObject.tag == "ebullet") {
+				Destroy (gameObject); //destroys enemy or enemy bullet(not sure if ebullet destroyed)
+				spawnerScript.enemyAmount--;
+			} 
 			Destroy (other.gameObject); //destroys bullet
+			//asteroid does not get destroyed
 		}
 		
 		if (other.tag == "ship") 
@@ -30,7 +37,6 @@ public class destroyObjects : MonoBehaviour
 				Destroy (other.gameObject); //destroys ship
 				Application.LoadLevel(2);
 			}
-			//Screen.showCursor = true;
 		}
 	}
 }

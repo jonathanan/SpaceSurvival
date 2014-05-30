@@ -11,6 +11,7 @@ public class gameOver : MonoBehaviour {
 	}
 	
 	void OnMouseExit() {
+		Screen.showCursor = true;
 		renderer.material.color = Color.white;
 	}
 	
@@ -19,6 +20,7 @@ public class gameOver : MonoBehaviour {
 			Application.Quit();
 		}
 		else {
+			Screen.showCursor = false;
 			Application.LoadLevel(1);
 		}
 	}
