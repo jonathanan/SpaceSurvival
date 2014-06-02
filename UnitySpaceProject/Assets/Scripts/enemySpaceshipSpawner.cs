@@ -4,7 +4,7 @@ using System.Collections;
 public class enemySpaceshipSpawner : MonoBehaviour
 {
 	public GameObject spaceship;			//enemy spaceship object
-	float waitTimebetweenEnemyWaves = 10f;	//time to wait before spawning next wave of enemy ships
+	float waitTimebetweenEnemyWaves = 24f;	//time to wait before spawning next wave of enemy ships
 	private float AImenuCases = 4;					//
 	public int formation = 0; //shared in enemyShipBehavior.cs
 	public int waypointSize = 0; //shared in enemyShipBehavior.cs
@@ -19,6 +19,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 			//SQUARE FORMATION
 			waypointSize = 8;
 			enemySpawnAmount = 10;
+			waitTimebetweenEnemyWaves = 12f;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
 			{
@@ -52,6 +53,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 			//SPIRAL
 			waypointSize = 12;
 			enemySpawnAmount = 12;
+			waitTimebetweenEnemyWaves = 12f;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
 			{
@@ -82,6 +84,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 		case 2:
 			//BOWTIE
 			waypointSize = 18;
+			waitTimebetweenEnemyWaves = 22.5f;
 			enemySpawnAmount = 15;
 			for(int i = 0; i < enemySpawnAmount; i++) {
 				Instantiate (spaceship, new Vector3 (-15, -15, 65),Quaternion.identity); //bottom left
@@ -93,7 +96,8 @@ public class enemySpaceshipSpawner : MonoBehaviour
 		case 3:
 			//SQUAREBIG FORMATION (HAS A BUG - SO NOT BEING USED)
 			waypointSize = 16;
-			enemySpawnAmount = 10;
+			enemySpawnAmount = 12;
+			waitTimebetweenEnemyWaves = 24f;
 			for(int i = 0; i < enemySpawnAmount; i++) {
 				Instantiate (spaceship, new Vector3 (-30, 15, 65), Quaternion.identity);	//top left
 				enemyAmount++;
@@ -115,10 +119,10 @@ public class enemySpaceshipSpawner : MonoBehaviour
 	{
 		while (true) //continuously called from start of game
 		{	
-			formation = Random.Range (0,2); 	//random value from 0 - 3 (range returns 1 less than 2nd arg)
-			if(GameObject.FindWithTag("Enemy") == null /*&& enemyAmount == 0*/)
+			formation = Random.Range (0,4); 	//random value from 0 - 3 (range returns 1 less than 2nd arg)
+			if(GameObject.FindWithTag("Enemy") == null && enemyAmount == 0)
 			{
-				//formation = 3; //hard code for testing
+				//formation = 2; //hard code for testing
 				StartCoroutine(AImenu( formation ));	//starts AImenu
 			}
 			yield return new WaitForSeconds (waitTimebetweenEnemyWaves); 

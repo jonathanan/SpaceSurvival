@@ -94,22 +94,35 @@ public class enemyShipBehavior : MonoBehaviour {
 		}
 
 		waypoints = waypointsTemp;
-		Debug.Log ("WAYPOINT LENGTH:" + waypoints.Length);
+		//Debug.Log ("WAYPOINT LENGTH:" + waypoints.Length);
 	}
 
 	// Update is called once per frame
 	void Update () {
+		GameObject ship = GameObject.Find("ship");
+		ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
 		if ( node < waypoints.Length ) {
 			Vector3 currentPos = this.transform.position;
 			Vector3 target = waypoints [node].transform.position;
 			Vector3 moveDirection = (target - currentPos);
 			Vector3 velocity = rigidbody.velocity;
-
+			if(ship2 != null)
+			{
+				if(ship2.SlowTime)
+				{
+					moveSpeed = 5f; 
+				}
+				else
+				{
+					moveSpeed = 7.5f; 
+				}
+			}
 			if (moveDirection.magnitude < 1) {
 				node++; //move to next waypoint
-				Debug.Log("INCREASING NODE: " + node);
+				//Debug.Log("INCREASING NODE: " + node);
 			} else {
 				velocity = moveDirection.normalized * moveSpeed;
+				Debug.Log("VELOCITY: " + velocity);
 			}
 			rigidbody.velocity = velocity;
 		} else {

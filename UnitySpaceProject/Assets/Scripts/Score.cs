@@ -19,6 +19,7 @@ public class Score : MonoBehaviour {
 
 	void Update() {
 		if (isGameOver) {
+			Screen.showCursor = true;
 			UpdateScore();
 			return;
 		}
