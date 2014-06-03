@@ -64,9 +64,9 @@
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\PauseScript.cs" />
      <Compile Include="Assets\Scripts\PowerUpBehavior.cs" />
+     <Compile Include="Assets\Scripts\PowerUpLife.cs" />
      <Compile Include="Assets\Scripts\PowerUpRapidFire.cs" />
      <Compile Include="Assets\Scripts\PowerUpScore.cs" />
-     <Compile Include="Assets\Scripts\PowerUpShield.cs" />
      <Compile Include="Assets\Scripts\PowerUpSlowTime.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\ShipBehavior.cs" />

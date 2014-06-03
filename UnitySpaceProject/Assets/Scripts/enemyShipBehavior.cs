@@ -122,7 +122,7 @@ public class enemyShipBehavior : MonoBehaviour {
 				//Debug.Log("INCREASING NODE: " + node);
 			} else {
 				velocity = moveDirection.normalized * moveSpeed;
-				Debug.Log("VELOCITY: " + velocity);
+				//Debug.Log("VELOCITY: " + velocity);
 			}
 			rigidbody.velocity = velocity;
 		} else {

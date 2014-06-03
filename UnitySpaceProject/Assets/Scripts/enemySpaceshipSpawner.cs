@@ -4,7 +4,7 @@ using System.Collections;
 public class enemySpaceshipSpawner : MonoBehaviour
 {
 	public GameObject spaceship;			//enemy spaceship object
-	float waitTimebetweenEnemyWaves = 24f;	//time to wait before spawning next wave of enemy ships
+	float waitTimebetweenEnemyWaves = 25f;	//time to wait before spawning next wave of enemy ships
 	private float AImenuCases = 4;					//
 	public int formation = 0; //shared in enemyShipBehavior.cs
 	public int waypointSize = 0; //shared in enemyShipBehavior.cs
@@ -19,7 +19,6 @@ public class enemySpaceshipSpawner : MonoBehaviour
 			//SQUARE FORMATION
 			waypointSize = 8;
 			enemySpawnAmount = 10;
-			waitTimebetweenEnemyWaves = 12f;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
 			{
@@ -53,7 +52,6 @@ public class enemySpaceshipSpawner : MonoBehaviour
 			//SPIRAL
 			waypointSize = 12;
 			enemySpawnAmount = 12;
-			waitTimebetweenEnemyWaves = 12f;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
 			{
@@ -84,8 +82,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 		case 2:
 			//BOWTIE
 			waypointSize = 18;
-			waitTimebetweenEnemyWaves = 22.5f;
-			enemySpawnAmount = 15;
+			enemySpawnAmount = 12;
 			for(int i = 0; i < enemySpawnAmount; i++) {
 				Instantiate (spaceship, new Vector3 (-15, -15, 65),Quaternion.identity); //bottom left
 				enemyAmount++;

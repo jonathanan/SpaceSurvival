@@ -18,6 +18,10 @@ public class AsteroidBehavior : MonoBehaviour {
 	void Update () {
 		// transform.Translate(Vector3.front * -7 * Time.deltaTime);
 		int timemult = (int)(Time.time/120);
+		if (timemult > 5) 
+		{
+			timemult = 5;
+		}
 		float asteroidspeed = -10f - timemult/2;
 		Vector3 pos = transform.position;
 		

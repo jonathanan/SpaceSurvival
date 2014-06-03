@@ -30,7 +30,7 @@ public class destroyObjects : MonoBehaviour
 		{
 			GameObject ship = GameObject.Find("ship");
 			ShipBehavior shipbehavior = ship.GetComponent<ShipBehavior>();
-			//shipbehavior.lives--;
+			shipbehavior.lives--;
 			Destroy (gameObject); //destroys asteroid
 			Instantiate (explosion, transform.position, transform.rotation); //explosion will occur at asteroid
 			if(shipbehavior.lives <= 0) {
