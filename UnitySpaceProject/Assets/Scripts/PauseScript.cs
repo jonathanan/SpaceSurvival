@@ -4,7 +4,7 @@ using System.Collections;
 public class PauseScript : MonoBehaviour {
 
 	public bool isPause = false;
-	private Rect windowRect = new Rect(400f, 175f, 500f, Screen.height/3);
+	private Rect windowRect = new Rect(400f, 175f, Screen.width/2 - 100, Screen.height/3);
 	GameObject player;
 
 	// Use this for initialization

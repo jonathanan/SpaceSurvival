@@ -3,13 +3,20 @@ using System.Collections;
 
 public class changeHUDcolor : MonoBehaviour {
 
+	public GameObject camera;
+
 	// Use this for initialization
 	void Start () {
 		renderer.material.color = new Color (0f, 1f, 0f); //green
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		Vector3 newPos = new Vector3();
+		newPos.x = camera.transform.position.x - 14.5f;
+		newPos.y = camera.transform.position.y - 7f;
+		newPos.z = 0;
+		transform.position = newPos;
 		GameObject ship = GameObject.Find("front1");
 		HUD hudBehavior = ship.GetComponent<HUD>();
 		if (hudBehavior.min > 50) {
