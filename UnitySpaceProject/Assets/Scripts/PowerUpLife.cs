@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class PowerUpLife : MonoBehaviour {
+
+	public AudioClip soundfile;
 
 	void OnTriggerEnter(Collider other) 
 	{
@@ -16,13 +19,20 @@ public class PowerUpLife : MonoBehaviour {
 		}
 		
 		if (other.tag == "ship") 
-		{
-			Destroy (gameObject); //destroys power up object
-			
+		{	
 			GameObject ship = GameObject.Find("ship");
 			ShipBehavior shipbehavior = ship.GetComponent<ShipBehavior>();
-			shipbehavior.lives++;
+			shipbehavior.doBarrelRoll = true;
+			if(shipbehavior.lives < 9) 
+			{
+				shipbehavior.lives++;
+			}
 
+			//play sound
+			//audio.PlayOneShot(soundfile);
+			//audio.Play();
+			audio.Play();
+			Destroy (gameObject); //destroys power up object
 		}
 	}	
 }

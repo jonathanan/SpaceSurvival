@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PowerUpScore : MonoBehaviour
 {
+	public AudioClip soundfile;
 	ShipBehavior shipbehavior = GameObject.Find ("ship").GetComponent<ShipBehavior>();
 	
 	void OnTriggerEnter(Collider other) 
@@ -25,7 +26,11 @@ public class PowerUpScore : MonoBehaviour
 			shipScript.doBarrelRoll = true; //do barrellRoll
 			GameObject score = GameObject.Find("Score");
 			Score scoreScript = score.GetComponent<Score>();
-			scoreScript.AddScore(250); //add 250 to score
+			scoreScript.AddScore(25); //add 25 to score
+
+			//play sound
+			audio.clip = soundfile;
+			audio.Play();
 		}
 	}
 }

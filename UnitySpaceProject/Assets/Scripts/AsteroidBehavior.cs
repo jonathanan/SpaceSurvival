@@ -29,9 +29,10 @@ public class AsteroidBehavior : MonoBehaviour {
 		pos.y += 0.02f * ast_direction * Time.deltaTime;
 		
 		GameObject ship = GameObject.Find("ship");
-		ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
-		if(ship2 != null)
+
+		if(ship.GetComponent<ShipBehavior>() != null)
 		{
+			ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
 			if (ship2.SlowTime) 
 			{
 				pos.z += asteroidspeed/2 * Time.deltaTime;

@@ -17,7 +17,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 		{
 		case 0:
 			//SQUARE FORMATION
-			waypointSize = 8;
+			waypointSize = 9;
 			enemySpawnAmount = 10;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
@@ -50,7 +50,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 
 		case 1:
 			//SPIRAL
-			waypointSize = 12;
+			waypointSize = 13;
 			enemySpawnAmount = 12;
 			randomStart = Random.Range (0,3);
 			switch(randomStart)
@@ -81,7 +81,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 
 		case 2:
 			//BOWTIE
-			waypointSize = 18;
+			waypointSize = 19;
 			enemySpawnAmount = 12;
 			for(int i = 0; i < enemySpawnAmount; i++) {
 				Instantiate (spaceship, new Vector3 (-15, -15, 65),Quaternion.identity); //bottom left
@@ -91,8 +91,8 @@ public class enemySpaceshipSpawner : MonoBehaviour
 			break;
 
 		case 3:
-			//SQUAREBIG FORMATION (HAS A BUG - SO NOT BEING USED)
-			waypointSize = 16;
+			//SQUAREBIG FORMATION 
+			waypointSize = 17;
 			enemySpawnAmount = 12;
 			waitTimebetweenEnemyWaves = 24f;
 			for(int i = 0; i < enemySpawnAmount; i++) {
@@ -123,6 +123,7 @@ public class enemySpaceshipSpawner : MonoBehaviour
 				StartCoroutine(AImenu( formation ));	//starts AImenu
 			}
 			yield return new WaitForSeconds (waitTimebetweenEnemyWaves); 
+			//set a waypoint behind the screen and destroy them after a few seconds
 
 		}
 	}

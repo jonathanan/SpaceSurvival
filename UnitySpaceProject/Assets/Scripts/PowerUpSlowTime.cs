@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PowerUpSlowTime : MonoBehaviour {
 
+	public AudioClip soundfile;
 	ShipBehavior shipbehavior = GameObject.Find ("ship").GetComponent<ShipBehavior>();
 
 	void OnTriggerEnter(Collider other) 
@@ -26,8 +27,12 @@ public class PowerUpSlowTime : MonoBehaviour {
 			GameObject ship = GameObject.Find("ship");
 			ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
 			ship2.SlowTime = true;
+			ship2.doBarrelRoll = true;
 			ship2.SlowTimeTime = Time.time + 30f;
-			//other.gameObject.trans
+
+			//play sound
+			audio.clip = soundfile;
+			audio.Play();
 		}
 	}
 }

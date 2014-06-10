@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
 			float timemult = (Time.time-time)/60f;
 			timemult = timemult/100f;
 			//spawn wait is the time between spawning of objects
-			spawnWait = .25f - timemult;
+			spawnWait = .40f - timemult;
 			if(spawnWait < .1f)
 			{
 				spawnWait = .1f;

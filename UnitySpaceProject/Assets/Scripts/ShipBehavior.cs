@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShipBehavior : MonoBehaviour {
 
-	public int lives = 3;
+	public int lives = 5;
 	public float moveSpeed;
 	public float rotationSpeed;
 	//public float maxRotateAngleX = 7f;
@@ -16,7 +16,7 @@ public class ShipBehavior : MonoBehaviour {
 	public float BRz = 0f;
 	public float SlowTimeTime;
 	public bool SlowTime;
-
+	public float immunetime = 0f;
 	//public Texture2D crosshairImage;
 
 	//Line render variables
@@ -96,7 +96,7 @@ public class ShipBehavior : MonoBehaviour {
 			}
 			else
 			{
-				BRz += 10f;
+				BRz += 5f;
 				transform.Rotate (BRz, 0f, 0f);
 				
 			}

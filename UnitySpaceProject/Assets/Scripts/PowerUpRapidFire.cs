@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PowerUpRapidFire : MonoBehaviour {
 
+	public AudioClip soundfile;
 	//Shooting shooting = GameObject.Find ("shootpoint").GetComponent<Shooting>();
 	
 	void OnTriggerEnter(Collider other) 
@@ -25,10 +26,15 @@ public class PowerUpRapidFire : MonoBehaviour {
 			
 			GameObject shooter = GameObject.Find("shootPoint");
 			Shooting shootscript = shooter.GetComponent<Shooting>();
+			GameObject ship = GameObject.Find("ship");
+			ShipBehavior shipScript = ship.GetComponent<ShipBehavior>();
+			shipScript.doBarrelRoll = true;
 			shootscript.Rapidfire = true;
 			shootscript.poweruptime = Time.time + 30f;
 
-			//other.gameObject.trans
+			//play sound
+			audio.clip = soundfile;
+			audio.Play();
 		}
 	}	
 }

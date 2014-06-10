@@ -6,6 +6,7 @@ public class enemyShipBehavior : MonoBehaviour {
 	GameObject[] waypoints = new GameObject[30]; //contains all waypoints
 	float moveSpeed = 7.5f;
 	private int node = 0; //current waypoint node
+	float starttime;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,7 @@ public class enemyShipBehavior : MonoBehaviour {
 		GameObject spawner = GameObject.Find("Spawner");
 		enemySpaceshipSpawner spawnerScript = spawner.GetComponent<enemySpaceshipSpawner>();
 		GameObject[] waypointsTemp = new GameObject[spawnerScript.waypointSize];
-
+		starttime = Time.time;
 		//Rotate ship to face player
 		transform.Rotate (0f, 180f, 0f);
 
@@ -27,6 +28,7 @@ public class enemyShipBehavior : MonoBehaviour {
 			waypointsTemp [5] = GameObject.Find ("waypoint0_5");
 			waypointsTemp [6] = GameObject.Find ("waypoint0_6");
 			waypointsTemp [7] = GameObject.Find ("waypoint0_7");
+			waypointsTemp [8] = GameObject.Find ("waypointfinal");
 			if (spawnerScript.randomStart == 0) {node = 0;} //top left
 			else if (spawnerScript.randomStart == 1) {node = 2;} //top right
 			else {node = 6;} //bottom left
@@ -46,6 +48,7 @@ public class enemyShipBehavior : MonoBehaviour {
 			waypointsTemp [9] = GameObject.Find ("waypoint1_9");
 			waypointsTemp [10] = GameObject.Find ("waypoint1_10");
 			waypointsTemp [11] = GameObject.Find ("waypoint1_11");
+			waypointsTemp [12] = GameObject.Find ("waypointfinal");
 			if (spawnerScript.randomStart == 0) {node = 0;} //top
 			else if (spawnerScript.randomStart == 1) {node = 6;} //bottom
 			else {node = 3;} //right
@@ -71,6 +74,7 @@ public class enemyShipBehavior : MonoBehaviour {
 			waypointsTemp [15] = GameObject.Find ("waypoint2_15");
 			waypointsTemp [16] = GameObject.Find ("waypoint2_16");
 			waypointsTemp [17] = GameObject.Find ("waypoint2_17");
+			waypointsTemp [18] = GameObject.Find ("waypointfinal");
 		}
 
 		//--------------SquareBig Formation----------------
@@ -91,6 +95,7 @@ public class enemyShipBehavior : MonoBehaviour {
 			waypointsTemp [13] = GameObject.Find ("waypoint3_13");
 			waypointsTemp [14] = GameObject.Find ("waypoint3_14");
 			waypointsTemp [15] = GameObject.Find ("waypoint3_15");
+			waypointsTemp [16] = GameObject.Find ("waypointfinal");
 		}
 
 		waypoints = waypointsTemp;
@@ -101,7 +106,31 @@ public class enemyShipBehavior : MonoBehaviour {
 	void Update () {
 		GameObject ship = GameObject.Find("ship");
 		ShipBehavior ship2 = ship.GetComponent<ShipBehavior>();
-		if ( node < waypoints.Length ) {
+		if (Time.time > starttime + 80f) {
+			Destroy (gameObject);
+			GameObject spawner = GameObject.Find("Spawner");
+			enemySpaceshipSpawner spawnerScript = spawner.GetComponent<enemySpaceshipSpawner>();
+			spawnerScript.enemyAmount--;
+			Debug.Log ("1");
+		}
+		else if (Time.time > starttime + 60f) {
+			Vector3 currentPos = this.transform.position;
+			Vector3 target = waypoints [waypoints.Length].transform.position;
+			Vector3 moveDirection = (target - currentPos);
+			Vector3 velocity = rigidbody.velocity;
+			if(ship2 != null)
+			{
+				if(ship2.SlowTime)
+				{
+					moveSpeed = 5f; 
+				}
+				else
+				{
+					moveSpeed = 7.5f; 
+				}
+			}
+		}
+		else if ( node < waypoints.Length-1 ) {
 			Vector3 currentPos = this.transform.position;
 			Vector3 target = waypoints [node].transform.position;
 			Vector3 moveDirection = (target - currentPos);
