@@ -6,6 +6,9 @@ public class PauseScript : MonoBehaviour {
 	public bool isPause = false;
 	private Rect windowRect = new Rect(400f, 175f, Screen.width/2 - 100, Screen.height/3);
 	GameObject player;
+	public Font font;
+	public Color color;
+	public Color color2;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +38,11 @@ public class PauseScript : MonoBehaviour {
 
 	void OnGUI() {
 		if (isPause) {
+			GUI.skin.font = font;
+			GUI.skin.window.fontSize = 55;
+			GUI.skin.button.fontSize = 30;
+			GUI.color = color2;
+
 			Screen.showCursor = true;
 			windowRect = GUILayout.Window (0, windowRect, DrawButtons, "Game Paused:");
 		}
@@ -42,8 +50,10 @@ public class PauseScript : MonoBehaviour {
 
 	private void DrawButtons(int windowID)
 	{
+		GUI.color = color;
+
 		GUILayout.BeginVertical();
-		GUILayout.Space (25);
+		GUILayout.Space (100);
 		if (GUILayout.Button ("Resume")) {
 			isPause = false;
 			Time.timeScale = 1;
